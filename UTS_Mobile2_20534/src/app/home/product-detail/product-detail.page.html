@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detail Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <ion-row>
+    <ion-col><ion-img [src]="loadedProduct.imgUrl[0]"></ion-img></ion-col>
+  </ion-row>
+
+  <ion-list color="medium">
+    <ion-card color="medium"><br>
+    <ion-title><b>{{loadedProduct.nama}}&nbsp;{{loadedProduct.model}}</b></ion-title><br>
+    <ion-item color="tertiary"><br>
+      <ion-col size="6"><br>
+        Harga : {{loadedProduct.harga | currency: 'Rp.':true:'2.0'}} <br><br>
+      </ion-col>
+      <ion-col size="6"><br>
+        Stok : {{loadedProduct.stok}} <br><br>
+      </ion-col>
+    </ion-item>
+    </ion-card>
+
+    <!--Jika item CPU-->
+    <ion-card color="medium"><br>
+    <ion-title>Spesifikasi Produk :</ion-title><br>
+    <ion-item *ngIf="loadedProduct.produkType == 'CPU'" color="tertiary">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            Model : <br>
+            {{loadedProduct.model}}
+          </ion-col>
+          <ion-col size="6">
+            Base Clock : <br>
+            {{loadedProduct.baseClock}} <small>Ghz</small>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            Boost Clock : <br>
+            {{loadedProduct.boostClock}} <small>Ghz</small>
+          </ion-col>
+          <ion-col size="6">
+            Core : <br>
+            {{loadedProduct.jumlahCore}} <small>Core</small>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col size="6">
+            Thread : <br>
+            {{loadedProduct.jumlahThread}} <small>Thread</small>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
+    <!--Jika item RAM-->
+    </ion-item>
+    <ion-item *ngIf="loadedProduct.produkType == 'RAM'" color="tertiary">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            Model : <br>
+            {{loadedProduct.model}}
+          </ion-col>
+          <ion-col size="6">
+            Speed : <br>
+            {{loadedProduct.speed}} <small>Mhz</small>
+          </ion-col>
+        </ion-row>
+        <br>
+        <ion-row>
+          <ion-col size="6">
+            Ukuran : <br>
+            {{loadedProduct.ukuran}} <small>GB</small>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <!--Jika item Motherboard-->
+    <ion-item *ngIf="loadedProduct.produkType == 'Motherboard'" color="tertiary">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            Model : <br>
+            {{loadedProduct.model}}
+          </ion-col>
+          <ion-col size="6">
+            Chipset : <br>
+            {{loadedProduct.chipset}}
+          </ion-col>
+        </ion-row>
+        <br>
+        <ion-row>
+          <ion-col size="6">
+            Processor : <br>
+            {{loadedProduct.processor}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <!--Jika item GPU-->
+    <ion-item *ngIf="loadedProduct.produkType == 'GPU'" color="tertiary">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            Model : <br>
+            {{loadedProduct.model}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    </ion-card>
+  </ion-list>
+</ion-content>
